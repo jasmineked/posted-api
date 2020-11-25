@@ -27,6 +27,7 @@ const requireToken = passport.authenticate('bearer', { session: false })
 // instantiate a router (mini app that only handles routes)
 const router = express.Router()
 
+
 // CREATE
 router.post('/files', requireToken, (req, res, next) => {
   // set owner of new file to be current user
@@ -51,6 +52,25 @@ router.patch('/files/:id', requireToken, removeBlanks, (req, res, next) => {
       // if the current user is not the owner
       requireOwnership(req, file)
       return file.updateOne(req.body.file)
+
+// Index
+router.get('/files', requireToken, (req, res, next) => {
+  File.find()
+    .then(files => {
+      return files.map(file => file.toObject())
+    })
+    .then(files => res.status(200).json({ files: files }))
+    .catch(next)
+})
+
+// Destroy
+router.delete('/files/:id', requireToken, (req, res, next) => {
+  File.findById(req.params.id)
+    .then(handle404)
+    .then(file => {
+      requireOwnership(req, file)
+      file.deleteOne()
+
     })
     .then(() => res.sendStatus(204))
     .catch(next)
