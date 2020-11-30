@@ -1,7 +1,7 @@
 #!/bin/bash
 
 API="http://localhost:4741"
-URL_PATH="/files"
+URL_PATH="/uploads"
 
 curl "${API}${URL_PATH}/${ID}" \
   --include \
@@ -9,7 +9,7 @@ curl "${API}${URL_PATH}/${ID}" \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer ${TOKEN}" \
   --data '{
-    "file": {
+    "upload": {
       "name": "'"${NAME}"'",
       "tag": "'"${TAG}"'"
     }
