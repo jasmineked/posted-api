@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const fileSchema = new mongoose.Schema({
+const uploadSchema = new mongoose.Schema({
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -13,9 +13,13 @@ const fileSchema = new mongoose.Schema({
   tag: {
     type: String,
     required: true
+  },
+  url: {
+    type: String,
+    required: true
   }
 }, {
   timestamps: true
 })
 
-module.exports = mongoose.model('File', fileSchema)
+module.exports = mongoose.model('Upload', uploadSchema)
