@@ -58,7 +58,7 @@ router.post('/uploads', uploadFile.single('upload'), (req, res, next) => {
 })
 
 // UPDATE
-router.patch('/files/:id', requireToken, removeBlanks, (req, res, next) => {
+router.patch('/uploads/:id', requireToken, removeBlanks, (req, res, next) => {
   // To prevent changing owner by deleting the key value pair
   delete req.body.file.owner
 
@@ -75,7 +75,7 @@ router.patch('/files/:id', requireToken, removeBlanks, (req, res, next) => {
 })
 
 // Index
-router.get('/files', requireToken, (req, res, next) => {
+router.get('/uploads', requireToken, (req, res, next) => {
   Upload.find()
     .then(files => {
       return files.map(file => file.toObject())
@@ -85,7 +85,7 @@ router.get('/files', requireToken, (req, res, next) => {
 })
 
 // Destroy
-router.delete('/files/:id', requireToken, (req, res, next) => {
+router.delete('/uploads/:id', requireToken, (req, res, next) => {
   Upload.findById(req.params.id)
     .then(handle404)
     .then(file => {
