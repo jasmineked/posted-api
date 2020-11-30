@@ -35,7 +35,7 @@ const router = express.Router()
 const s3Upload = require('../../lib/s3_upload')
 
 // CREATE
-router.post('/uploads', uploadFile.single('upload'), (req, res, next) => {
+router.post('/uploads', uploadFile.single('upload'), requireToken, (req, res, next) => {
   console.log(req.file)
   // set owner of new file to be current user
   // req.body.file.owner = req.user.id
@@ -43,7 +43,7 @@ router.post('/uploads', uploadFile.single('upload'), (req, res, next) => {
   s3Upload(req.file)
     .then(awsFile => {
       console.log(awsFile)
-      return Upload.create({ url: awsFile.Location })
+      return Upload.create({ url: awsFile.Location, name: req.body.name, tag: req.body.tag, owner: req.user.id })
     })
     .then(uploadDoc => {
       res.status(201).json({ upload: uploadDoc })

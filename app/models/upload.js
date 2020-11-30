@@ -13,11 +13,11 @@ const uploadSchema = new mongoose.Schema({
   tag: {
     type: String,
     required: true
-  },
-  url: {
-    type: String,
-    required: true
   }
+  // url: {
+  //   type: String,
+  //   required: true
+  // }
 }, {
   timestamps: true
 })
