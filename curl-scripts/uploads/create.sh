@@ -11,7 +11,8 @@ curl "${API}${URL_PATH}" \
   --data '{
     "upload": {
       "name": "'"${NAME}"'",
-      "tag": "'"${TAG}"'"
+      "tag": "'"${TAG}"'",
+      "url": "'"${URL}"'"
     }
   }'
 
