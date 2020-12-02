@@ -36,7 +36,7 @@ For V1, We planned to build one(user) to many(files) relationship
 - [Project Front End Repo](https://github.com/CJNJC/project3-react-client)
 - [Project Back End Repo](https://github.com/CJNJC/project3-api)
 - [Deployed API](https://safe-eyrie-19741.herokuapp.com/uploads)
-- [Deployed Client](https://CJNJC/github.io/Project3)
+- [Deployed Client](https://CJNJC/github.io/project3-react-client)
 
 ### Technologies Used
 
