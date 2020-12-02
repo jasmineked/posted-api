@@ -13,6 +13,7 @@ Building a file storage app that allows user upload/view/edit/delete files
 
 
 
+
 ### User Stories 
 - As an unregistered user, I would like to sign up with email and password.
 - As a registered user, I would like to sign in with email and password.
@@ -27,6 +28,7 @@ Building a file storage app that allows user upload/view/edit/delete files
 
 ### ERD
 
+For V1, We planned to build one(user) to many(files) relationship 
 ![ERD](https://i.imgur.com/5dDhjAk.png)
 
 ### Important Links
