@@ -1,5 +1,8 @@
 const mongoose = require('mongoose')
-
+// storing this data in mongo
+// not storing the actual file,
+// STORING THE REFERENCE OF THE FILE
+// REFERENCE IS THE URL(How we keep the track of the file)
 const uploadSchema = new mongoose.Schema({
   owner: {
     type: mongoose.Schema.Types.ObjectId,
