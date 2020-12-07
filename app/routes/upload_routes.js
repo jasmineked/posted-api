@@ -89,8 +89,10 @@ router.delete('/uploads/:id', requireToken, (req, res, next) => {
 })
 
 // UPDATE
-router.post('/uploads/:id', requireToken, (req, res, next) => {
+router.patch('/uploads/:id', requireToken, (req, res, next) => {
   // To prevent changing owner by deleting the key value pair
+  // delete req.body.form.owner
+
   console.log('req.body', req.body)
   Upload.findById(req.params.id)
     .then(handle404)
