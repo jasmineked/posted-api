@@ -10,9 +10,10 @@ Building a file storage app that allows user upload/view/edit/delete files
 
 ### Planning, process and problem-solving strategy
 
-
-
-
+- Day 1: Wireframe, ERD, front end/backend init, and catalog of routes. AWS s3 bucket setup, backend model schema
+- Day 2: MOB coding of backend API routes, front end create function
+- Day 3: Pair coding of index and delete functions. Basic outline for styling of application
+- Day 4: MOB coding for delete and update, as well as all unsolved issues in previous days work. deployed front and backend repos.
 
 ### User Stories 
 - As an unregistered user, I would like to sign up with email and password.
@@ -52,4 +53,3 @@ For V1, We planned to build one(user) to many(files) relationship
 
 - We'd like to make the application more user friendly and professionally styled
 - We'd like to be able to categorize uploaded files by date uploaded, date updated, file type, owner, and tag
-
