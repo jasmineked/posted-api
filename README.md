@@ -50,6 +50,6 @@ For V1, We planned to build one(user) to many(files) relationship
 
 ### Unsolved Problems 
 
-- We'd like to make 
-- We still need to 
+- We'd like to make the application more user friendly and professionally styled
+- We'd like to be able to categorize uploaded files by date uploaded, date updated, file type, owner, and tag
 
