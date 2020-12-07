@@ -2,11 +2,15 @@
 
 Building a file storage app that allows user upload/view/edit/delete files 
 
+- - - -
+
 ### Teamwork
 
 - Get | Update : Jasmine & Nathan 
 - Delete | Create : Chris & J
 - Worked all together on back end before moving on to front end
+
+- - - -
 
 ### Planning, process and problem-solving strategy
 
@@ -14,6 +18,8 @@ Building a file storage app that allows user upload/view/edit/delete files
 - Day 2: MOB coding of backend API routes, front end create function
 - Day 3: Pair coding of index and delete functions. Basic outline for styling of application
 - Day 4: MOB coding for delete and update, as well as all unsolved issues in previous days work. deployed front and backend repos.
+
+- - - -
 
 ### User Stories 
 - As an unregistered user, I would like to sign up with email and password.
@@ -27,10 +33,14 @@ Building a file storage app that allows user upload/view/edit/delete files
 - As a signed in user, I would like to delete the reference of my file from the database.
 - As a signed in user, I would like to see the following meta-data for any file: date created/uploaded date modified/owner (user who uploaded the file)/tag
 
+- - - -
+
 ### ERD
 
 For V1, We planned to build one(user) to many(files) relationship 
 ![ERD](https://i.imgur.com/5dDhjAk.png)
+
+- - - -
 
 ### Important Links
 
@@ -38,6 +48,8 @@ For V1, We planned to build one(user) to many(files) relationship
 - [Project Back End Repo](https://github.com/CJNJC/project3-api)
 - [Deployed API](https://safe-eyrie-19741.herokuapp.com/uploads)
 - [Deployed Client](https://CJNJC/github.io/project3-react-client)
+
+- - - -
 
 ### Technologies Used
 
@@ -48,6 +60,8 @@ For V1, We planned to build one(user) to many(files) relationship
 - Express
 - MongoDB
 - Mongoose
+
+- - - -
 
 ### Unsolved Problems 
 
