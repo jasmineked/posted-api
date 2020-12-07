@@ -23,7 +23,7 @@ const requireOwnership = customErrors.requireOwnership
 
 // this is middleware that will remove blank fields from `req.body`, e.g.
 // { example: { title: '', text: 'foo' } } -> { example: { text: 'foo' } }
-const removeBlanks = require('../../lib/remove_blank_fields')
+// const removeBlanks = require('../../lib/remove_blank_fields')
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
 // it will also set `req.user`
@@ -37,7 +37,7 @@ const s3Upload = require('../../lib/s3_upload')
 // CREATE
 router.post('/uploads', uploadFile.single('upload'), requireToken, (req, res, next) => {
   console.log(req.file)
-
+  console.log('this is body', req.body)
   // when successfully uploads the file to AWS,
   s3Upload(req.file)
   // You are passed back the reference to awsfile
@@ -53,23 +53,6 @@ router.post('/uploads', uploadFile.single('upload'), requireToken, (req, res, ne
     .catch(next)
 })
 
-// UPDATE
-router.patch('/uploads/:id', requireToken, removeBlanks, (req, res, next) => {
-  // To prevent changing owner by deleting the key value pair
-  delete req.body.file.owner
-
-  Upload.findById(req.params.id)
-    .then(handle404)
-    .then(file => {
-      // Pass the req to the requiredOwnership and it'll throw an error
-      // if the current user is not the owner
-      requireOwnership(req, file)
-      return file.updateOne(req.body.file)
-    })
-    .then(() => res.sendStatus(204))
-    .catch(next)
-})
-
 // Index
 router.get('/uploads', requireToken, (req, res, next) => {
   Upload.find()
@@ -80,13 +63,42 @@ router.get('/uploads', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+// Show
+router.get('/uploads/:id', requireToken, (req, res, next) => {
+  Upload.findById(req.params.id)
+    // .then(files => {
+    //   return files.map(file => file.toObject())
+    // })
+    .then(handle404)
+    .then(file => res.status(200).json({ file: file }))
+    .catch(next)
+})
+
 // Destroy
 router.delete('/uploads/:id', requireToken, (req, res, next) => {
+  console.log('this is req.params.id', req.params.id)
   Upload.findById(req.params.id)
     .then(handle404)
     .then(file => {
+      console.log('this is file', file)
       requireOwnership(req, file)
-      file.deleteObject()
+      file.deleteOne()
+    })
+    .then(() => res.sendStatus(204))
+    .catch(next)
+})
+
+// UPDATE
+router.post('/uploads/:id', requireToken, (req, res, next) => {
+  // To prevent changing owner by deleting the key value pair
+  console.log('req.body', req.body)
+  Upload.findById(req.params.id)
+    .then(handle404)
+    .then(file => {
+      // Pass the req to the requiredOwnership and it'll throw an error
+      // if the current user is not the owner
+      requireOwnership(req, file)
+      return file.updateOne({ name: req.body.name, tag: req.body.tag })
     })
     .then(() => res.sendStatus(204))
     .catch(next)
