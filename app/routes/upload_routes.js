@@ -36,13 +36,10 @@ const s3Upload = require('../../lib/s3_upload')
 
 // CREATE
 router.post('/uploads', uploadFile.single('upload'), requireToken, (req, res, next) => {
-  console.log(req.file)
-  console.log('this is body', req.body)
   // when successfully uploads the file to AWS,
   s3Upload(req.file)
   // You are passed back the reference to awsfile
     .then(awsFile => {
-      console.log(awsFile)
       // and then create/store the reference of the file in MongoDB
       return Upload.create({ url: awsFile.Location, name: req.body.name, tag: req.body.tag, owner: req.user.id })
     })
@@ -76,11 +73,9 @@ router.get('/uploads/:id', requireToken, (req, res, next) => {
 
 // Destroy
 router.delete('/uploads/:id', requireToken, (req, res, next) => {
-  console.log('this is req.params.id', req.params.id)
   Upload.findById(req.params.id)
     .then(handle404)
     .then(file => {
-      console.log('this is file', file)
       requireOwnership(req, file)
       file.deleteOne()
     })
@@ -92,8 +87,6 @@ router.delete('/uploads/:id', requireToken, (req, res, next) => {
 router.patch('/uploads/:id', requireToken, (req, res, next) => {
   // To prevent changing owner by deleting the key value pair
   // delete req.body.form.owner
-
-  console.log('req.body', req.body)
   Upload.findById(req.params.id)
     .then(handle404)
     .then(file => {
