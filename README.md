@@ -8,10 +8,8 @@ Posted: a file storage application that allows users to upload and share files. 
 - [Nathan Gundy](https://github.com/gundyn)
 - [Christopher Farish](https://github.com/orgs/CJNJC/people/CPF32)
 
----
 
 ### Planning Process
-
 ---
 **User Stories**
 
@@ -30,7 +28,6 @@ Posted: a file storage application that allows users to upload and share files. 
   - Delete the reference of my file from the database.
 ---
 
----
 
 ### Planning, process and problem-solving strategy
 
