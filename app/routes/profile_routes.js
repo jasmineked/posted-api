@@ -29,7 +29,7 @@ const router = express.Router()
 
 // CREATE
 // POST /profiles
-router.post('/profiles', requireToken, (req, res, next) => {
+router.post('/profiles/', requireToken, (req, res, next) => {
   // set owner of new profile to be current user
   req.body.profile.owner = req.user.id
 
