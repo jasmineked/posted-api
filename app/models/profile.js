@@ -1,22 +1,9 @@
 const mongoose = require('mongoose')
 
 const profileSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: true
+  username: {
+    type: String
   },
- lastName: {
-    type: String,
-    required: false
-  },
-  pronoun: {
-     type: String,
-     required: false
-   },
-  // picture: {
-  //    type: String,
-  //    required: true
-    //},
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

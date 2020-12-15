@@ -1,7 +1,7 @@
 'use strict'
 
 // creating a base name for the mongodb
-const mongooseBaseName = 'file-share-api'
+const mongooseBaseName = 'file-share-jasmine'
 
 // create the mongodb uri for development and test
 const database = {
